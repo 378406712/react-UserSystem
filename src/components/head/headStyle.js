@@ -7,6 +7,7 @@ height:60px;
 line-height:60px;
 background-color: #ccc;
 
+
 .welcome {
   position: absolute;
   right: 5rem;
@@ -25,7 +26,7 @@ i {
   font-style: normal;
 }
 `
-export const Logo = styled.a`
+export const Logo = styled.div`
 float:left;
 width:120px;
 height: 60px;

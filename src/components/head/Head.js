@@ -1,11 +1,11 @@
 import React from 'react';
-import { HeadWrap, Logo, Nav, Item, SearchWrap, Search, SearchInfo,  } from './headStyle';
+import { HeadWrap, Logo, Nav, Item, SearchWrap, Search, SearchInfo, } from './headStyle';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, NavLink, Switch } from 'react-router-dom'
 import * as handleAction from './store/headActionCreate'
 
 function showInfo(flag) {
-    
+
 
     if (flag) {
         return (
@@ -28,38 +28,45 @@ function showInfo(flag) {
 
 function Head(props) {
     // state = store.getState();//接收store中数据
-    let { inputFocus, inputBlur, flag,name,exit} = props
+    let { inputFocus, inputBlur, flag, name, exit } = props
 
-  
+
     return (
         <div>
             <HeadWrap>
-                <Logo></Logo>
+            <NavLink to="/"><Item> <Logo></Logo></Item></NavLink>
+               
                 <Nav className="clearFix">
 
-                    <NavLink to="/"><Item>首页</Item></NavLink>
-                    <NavLink to="/load"><Item>加载页</Item></NavLink>
-                    <Switch>
+                    <NavLink exact activeStyle={{
+                        
+                        fontWeight: 600
+                    }} to="/"><Item>首页</Item></NavLink>
+                    <NavLink activeStyle={{
+                    
+                    fontWeight: 600
+                    }} to="/load"><Item>加载页</Item></NavLink>
+                <Switch>
 
- 
-                    </Switch>
+
+                </Switch>
 
                 </Nav>
-                {showInfo(flag)}
-                <SearchWrap>
-                    <Search onFocus={inputFocus}
-                        onBlur={inputBlur}
-                        className={flag ? 'flag' : ''} />
-                    <span className="glyphicon glyphicon-search"></span>
-                </SearchWrap>
-                <span className="welcome">
-                    欢迎
+            {showInfo(flag)}
+            <SearchWrap>
+                <Search onFocus={inputFocus}
+                    onBlur={inputBlur}
+                    className={flag ? 'flag' : ''} />
+                <span className="glyphicon glyphicon-search"></span>
+            </SearchWrap>
+            <span className="welcome">
+                欢迎
         <em className="user">[ {name} ]</em>登录，
         {/* <i className="exit" onClick ={exit}>退出</i> */}
-                </span>
+            </span>
             </HeadWrap>
 
-        </div>
+        </div >
     )
 
 
@@ -69,7 +76,7 @@ function Head(props) {
 //映射数据,将state中数据映射到store,store再转给reducer
 const mapState = (state) => ({
     flag: state.head.flag,
-    name:state.head.names
+    name: state.head.names
 })
 //派发方法
 const mapDispatch = (dispatch) => ({

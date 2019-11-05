@@ -31,8 +31,8 @@ login(){
    
      
     
-     localStorage.setItem('token',res.data)//存入token,进行登录判断
-     localStorage.setItem('user',this.state.user)
+     sessionStorage.setItem('token',res.data)//存入token,进行登录判断
+     sessionStorage.setItem('user',this.state.user)
      this.props.history.push({pathname:'/'});//编程式导航跳转首页
  })
  

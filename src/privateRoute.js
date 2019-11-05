@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import { Route, withRouter} from 'react-router-dom';
+import {Route, withRouter} from 'react-router-dom';
 
 class PrivateRoute extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isAuthenticated: window.localStorage.getItem("token")==='1' ? true: false
+            isAuthenticated: window.sessionStorage.getItem("token")==='1' ? true: false
         }
       
     }
